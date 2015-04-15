@@ -6,21 +6,16 @@
 
 ### Item 1: Define the scope of variables
 
-There are 4 types of variables:
+- There are 4 types of variables:
+  - **Instance Variables (Non-Static Fields)** - Variables declared without the *static* modifier, belong to the instance and are independent from the class.
+  - **Class Variables (Static Fields)** - Declared with the *static* modifier, this tells the compiler there is exactly one copy of this variable, independent on how many instances use it. Add the *final* keyword to prevent the variable from ever changing.
+  - **Local Variables** - Variables defined within the scope of a method, and therefore not visible from outside.
+  - **Parameters** - Arguments of our methods.
 
-**Instance Variables (Non-Static Fields)** - Variables declared without the *static* modifier, belong to the instance and are independent from the class.
-
-**Class Variables (Static Fields)** - Declared with the *static* modifier, this tells the compiler there is exactly one copy of this variable, independent on how many instances use it. Add the *final* keyword to prevent the variable from ever changing.
-
-**Local Variables** - Variables defined within the scope of a method, and therefore not visible from outside.
-
-**Parameters** - Arguments of our methods.
-
-Naming considerations are as follow:
-
-- Casesensitive
-- $ and leading _ are allowed but generally frowned upon
-- Single-words variables are lowercase, multi-word are camel case and contant value vars are upper-case with an underscore between words.
+- Naming considerations are as follow:
+  - Casesensitive
+  - $ and leading _ are allowed but generally frowned upon
+  - Single-words variables are lowercase, multi-word are camel case and contant value vars are upper-case with an underscore between words.
 
 ### Item 2: Define the structure of Java class
 

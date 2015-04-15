@@ -10,7 +10,13 @@ There are 4 types of variables:
 
 **Instance Variables (Non-Static Fields)** - Variables declared without the *static* modifier, belong to the instance and are independent from the class.
 
-**Class Variables (Static Fields)** - Declared with the *static* modifier, this tells the compiler there is exactly one copy of this variable, independent on how many instances use it. You could additionally use the *final* keyword to prevent the variable from ever changing.
+**Class Variables (Static Fields)** - Declared with the *static* modifier, this tells the compiler there is exactly one copy of this variable, independent on how many instances use it. Add the *final* keyword to prevent the variable from ever changing.
+
+**Local Variables** - Variables defined within the scope of a method, and therefore not visible from outside.
+
+**Parameters** - Arguments of our methods.
+
+
 
 ### Item 2: Define the structure of Java class
 

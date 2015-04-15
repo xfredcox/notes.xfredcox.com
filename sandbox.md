@@ -51,6 +51,7 @@
  
 # Drafts
 
+- [Java Primer]
 - [Marked] vs. [Markdown.js]
 - [NGINX & Websockets] 
 - [NGINX Routing]

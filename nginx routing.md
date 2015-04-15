@@ -22,7 +22,7 @@
   - First, the most specific **literal** location is selected, regardless of the order.
   - Next, REGEX locations are evaluated **in order** and any matches are immediately returned.
   - If no REGEX matches are found, the previously selected literal is used.
-- Notes: 
+- Notes:  
   - The location directive only inspects the URI, excluding the query string.
 
 ### Directives

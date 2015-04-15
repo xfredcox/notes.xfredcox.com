@@ -6,6 +6,12 @@
 
 ### Item 1: Define the scope of variables
 
+There are 4 types of variables:
+
+**Instance Variables (Non-Static Fields)** - Variables declared without the *static* modifier, belong to the instance and are independent from the class.
+
+**Class Variables (Static Fields)** - Declared with the *static* modifier, this tells the compiler there is exactly one copy of this variable, independent on how many instances use it. You could additionally use the *final* keyword to prevent the variable from ever changing.
+
 ### Item 2: Define the structure of Java class
 
 ### Item 3: Create executable Java applications with a main method

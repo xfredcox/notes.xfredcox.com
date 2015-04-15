@@ -1,5 +1,5 @@
 # Web Application Hosting in the AWS Cloud
-
+ 
 Notes form this [whitepaper](http://media.amazonwebservices.com/AWS_Web_Hosting_Best_Practices.pdf).
 
 ### "Traditional" Web Hosting

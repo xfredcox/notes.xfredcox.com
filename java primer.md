@@ -16,7 +16,11 @@ There are 4 types of variables:
 
 **Parameters** - Arguments of our methods.
 
+Naming considerations are as follow:
 
+- Casesensitive
+- $ and leading _ are allowed but generally frowned upon
+- Single-words variables are lowercase, multi-word are camel case and contant value vars are upper-case with an underscore between words.
 
 ### Item 2: Define the structure of Java class
 

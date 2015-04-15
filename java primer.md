@@ -17,7 +17,17 @@
   - $ and leading _ are allowed but generally frowned upon
   - Single-words variables are lowercase, multi-word are camel case and contant value vars are upper-case with an underscore between words.
 
+Continues at http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+
 ### Item 2: Define the structure of Java class
+
+- There are three types of comments:
+  - /* multiline */
+  - /** multiline that gets picked up by javadoc */
+  - // singleline
+
+Continues at http://docs.oracle.com/javase/tutorial/java/javaOO/classdecl.html
+
 
 ### Item 3: Create executable Java applications with a main method
 

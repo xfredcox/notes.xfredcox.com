@@ -51,7 +51,6 @@
  
 # Drafts
 
-- [IPython Server Setup in 5min]
 - [Java Primer]
 - [Marked] vs. [Markdown.js]
 - [NGINX & Websockets] 

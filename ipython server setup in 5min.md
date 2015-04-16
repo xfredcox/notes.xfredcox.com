@@ -34,7 +34,7 @@ Verify password:
 Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
 ``
 
-6) Configure & Run the server:
+7) Configure & Run the server:
 
 ``bash
 ipython profile create nbserver
@@ -54,7 +54,7 @@ c.NotebookApp.port = 9999``
 ipython notebook --profile=nbserver
 ``
 
-7) Configure & Run Nginx Reverse Proxy
+8) Configure & Run Nginx Reverse Proxy
 
 ``bash
 sudo emacs -nw /etc/nginx/conf.d/ipython.conf
@@ -105,9 +105,13 @@ sudo emacs -nw /etc/nginx/nginx.conf
 ...
 ``
 
-Now restart the server:
+Now restart Nginx:
 
 ``bash
 sudo service nginx restart
 ``
+
+9) Custom Domain Name (Optional)
+
+Go to you DNS Host and enter an A record pointing the domain to the EC2 instance's public IP.
  

@@ -3,7 +3,9 @@
 ### Starting from a fresh Ubuntu 14.4 EC2 instance...
 
 1) Open security group ports 22/ssh, 80/http and 443/https.
+
 2) Make sure you have the credentials key file to ssh into the machine.
+
 3) Install the boiler-plate stuff:
 
 ``bash

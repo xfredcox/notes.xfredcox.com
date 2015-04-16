@@ -34,7 +34,7 @@ Verify password:
 Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
 ``
 
-6) Configure the server:
+6) Configure & Run the server:
 
 ``bash
 ipython profile create nbserver
@@ -50,4 +50,64 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.password = u'sha1:bcd259ccf...[your hashed password here]'
 c.NotebookApp.port = 9999``
 ``
+``bash
+ipython notebook --profile=nbserver
+``
 
+7) Configure & Run Nginx Reverse Proxy
+
+``bash
+sudo emacs -nw /etc/nginx/conf.d/ipython.conf
+``
+
+``nginx
+server {
+    listen 80;
+    rewrite        ^ https://$host$request_uri? permanent;
+}
+server {
+    listen 443;
+    ssl on;
+    ssl_certificate /home/ubuntu/mycert.pem;
+    ssl_certificate_key /home/ubuntu/mycert.pem;
+    ssl_session_timeout 5m;
+    ssl_protocols SSLv2 SSLv3 TLSv1;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    error_log /home/ubuntu/ipython/error.log;
+    location ^~ /static/ {
+        alias /home/ubuntu/ipython/venv/lib/python3.4/site-packages/IPython/html/static/;
+    }
+    location / {
+        proxy_pass https://localhost:9999;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 86400;
+    }
+}
+``
+
+Now make sure to _comment out_ the built-in default config:
+
+``bash
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+sudo emacs -nw /etc/nginx/nginx.conf
+``
+
+``nginx
+...
+#       include /etc/nginx/sites-enabled/*;
+...
+``
+
+Now restart the server:
+
+``bash
+sudo service nginx restart
+``
+ 

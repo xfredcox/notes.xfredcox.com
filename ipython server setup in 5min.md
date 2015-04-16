@@ -10,7 +10,7 @@
 sudo apt-get install git emacs python3.4 python3-dev python-virtualenv liblapack-dev libatlas-dev gfortran nginx
 ``
 
-4. Create a local virtual environment:
+\4. Create a local virtual environment:
 
 ``bash
 virtualenv venv -p python3.4
@@ -18,13 +18,13 @@ source venv/bin/activate
 pip install numpy pandas scipy scikit-learn boto tornado pyzmq jinja2 requests ipython jsonschema
 ``
 
-5. Create a self-assigned certificate:
+\5. Create a self-assigned certificate:
 
 ``bash
 openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 ``
 
-6. Configure the IPython Notebook server:
+\6. Generate the server password:
 
 ``python
 In [1]: from IPython.lib import passwd

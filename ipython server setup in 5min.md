@@ -10,7 +10,7 @@
 sudo apt-get install git emacs python3.4 python3-dev python-virtualenv liblapack-dev libatlas-dev gfortran nginx
 ``
 
-  4. Create a local virtual environment:
+4) Create a local virtual environment:
 
 ``bash
 virtualenv venv -p python3.4

@@ -101,7 +101,7 @@ sudo emacs -nw /etc/nginx/nginx.conf
 
 ``nginx
 ...
-#       include /etc/nginx/sites-enabled/*;
+\#       include /etc/nginx/sites-enabled/*;
 ...
 ``
 

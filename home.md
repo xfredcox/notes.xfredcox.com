@@ -2,7 +2,7 @@
 
 **Apr 13th - Apr 19th**
 
-- A little checklist on how to do a [IPython Server Setup in 5min].
+- A little checklist on how to do a [IPython Server Setup in 5min]. The reverse proxy with web sockets enabled is particularly worth saving for future reference.
 - I open sourced *flash-card*, a polymer element that creates ANKI-like flash cards from google spreadsheets. You can find it over at [xfredcox/flash-cards](https://github.com/xfredcox/flash-cards). Pretty soon I'll integrate it into Atom Paper so you can seamlessly call the flashcard decks inside your content. 
 
 **Mar 23rd - Mar 29th**

@@ -52,7 +52,6 @@ java HelloWorld
 
 - Strings are not primitive (java.lang.String) and are enclosed by double quotes.
 
-
 ## Section 3: Using Operators and Decision Constructs
 
 ## Section 4: Creating and Using Arrays

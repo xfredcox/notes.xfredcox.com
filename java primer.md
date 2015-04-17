@@ -42,6 +42,8 @@ java HelloWorld
 
 - Java is *statically-typed*: all variables must be declared before being used.
 - Eight primitive types:
+
+  - **int**
   - **byte** - 8-bit ranging from -128 to 127. Default: 0.
   - **short** - 32-bit ranging from -2^31 to 2^31 -1. Default: 0.
   - **long** - 64-bit ranging from -2^64 to 2^63 -1. Default: 0L

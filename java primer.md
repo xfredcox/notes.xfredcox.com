@@ -31,6 +31,10 @@ Continues at http://docs.oracle.com/javase/tutorial/java/javaOO/classdecl.html
 
 ### Item 3: Create executable Java applications with a main method
 
+``bash
+javac ./HelloWorld.java
+java HelloWorld
+``
 
 
 

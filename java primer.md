@@ -36,11 +36,22 @@ javac ./HelloWorld.java
 java HelloWorld
 ``
 
-
-
 ----
 
 ## Section 2: Working with Java Data Types
+
+- Java is *statically-typed*: all variables must be declared before being used.
+- Eight primitive types:
+  - **byte** - 8-bit ranging from -128 to 127. Default: 0.
+  - **short** - 32-bit ranging from -2^31 to 2^31 -1. Default: 0.
+  - **long** - 64-bit ranging from -2^64 to 2^63 -1. Default: 0L
+  - **float** - 32-bit. Default: 0.0f
+  - **double** - 64-bit. Default: 0.0d
+  - **boolean** - true or false, but not necessarily 1-bit. Default: false
+  - **char** - 16-bit rangin from 0 ('/u0000') to 65535 ('\uffff'). Default:'\u0000'
+
+- Strings are not primitive (java.lang.String) and are enclosed by double quotes.
+
 
 ## Section 3: Using Operators and Decision Constructs
 

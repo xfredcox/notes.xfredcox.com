@@ -17,6 +17,42 @@
   - $ and leading _ are allowed but generally frowned upon
   - Single-words variables are lowercase, multi-word are camel case and contant value vars are upper-case with an underscore between words.
 
+
+### Item 2: Define the structure of Java class
+
+- There are three types of comments:
+  - /* multiline */
+  - /** multiline that gets picked up by javadoc */
+  - // singleline
+
+Continues at http://docs.oracle.com/javase/tutorial/java/javaOO/classdecl.html
+
+
+### Item 3: Create executable Java applications with a main method
+
+``bash
+javac ./HelloWorld.java
+java HelloWorld
+``
+
+----
+
+## Section 2: Working with Java Data Types
+
+- Java is *statically-typed*: all variables must be declared before being used.
+- Eight primitive types:
+
+  - **int**
+  - **byte** - 8-bit ranging from -128 to 127. Default: 0.
+  - **short** - 32-bit ranging from -2^31 to 2^31 -1. Default: 0.
+  - **long** - 64-bit ranging from -2^64 to 2^63 -1. Default: 0L
+  - **float** - 32-bit. Default: 0.0f
+  - **double** - 64-bit. Default: 0.0d
+  - **boolean** - true or false, but not necessarily 1-bit. Default: false
+  - **char** - 16-bit rangin from 0 ('/u0000') to 65535 ('\uffff'). Default:'\u0000'
+
+- Strings are not primitive (java.lang.String) and are enclosed by double quotes.
+
 - *literals* are the source code representation of a fixed value that doesn't require computation and don't require the keyword **new** on assignment. i.e:
 
 ``java
@@ -61,40 +97,29 @@ float f1 = 123.4f;
 
 Continues at http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
 
-### Item 2: Define the structure of Java class
+**Arrays**
 
-- There are three types of comments:
-  - /* multiline */
-  - /** multiline that gets picked up by javadoc */
-  - // singleline
+- Arrays are zero-indexed containers of fixed type and immutable length.
+- You instantiate an array by declaring the type + [ ] and the variable name. The length is defined on assignment.
+- These are alternative syntax for initialising an array:
 
-Continues at http://docs.oracle.com/javase/tutorial/java/javaOO/classdecl.html
-
-
-### Item 3: Create executable Java applications with a main method
-
-``bash
-javac ./HelloWorld.java
-java HelloWorld
+``java
+anArray = new int[10];
+anArray[0] = 100 // etc.
+// vs
+int[] anArray = { 
+    100, 200, 300,
+    400, 500, 600, 
+    700, 800, 900, 1000
+};
 ``
 
-----
+- Multidimensional arrays are defined with two square brackets and allow for varying element lengths.
+- All arrays have a length attribute.
+- The *System* class has an arraycopy method which allows you to copy slices of an array into another (iitialized) array.
+- The javautils.Arrays class offers several arrya manipulation methods.
 
-## Section 2: Working with Java Data Types
-
-- Java is *statically-typed*: all variables must be declared before being used.
-- Eight primitive types:
-
-  - **int**
-  - **byte** - 8-bit ranging from -128 to 127. Default: 0.
-  - **short** - 32-bit ranging from -2^31 to 2^31 -1. Default: 0.
-  - **long** - 64-bit ranging from -2^64 to 2^63 -1. Default: 0L
-  - **float** - 32-bit. Default: 0.0f
-  - **double** - 64-bit. Default: 0.0d
-  - **boolean** - true or false, but not necessarily 1-bit. Default: false
-  - **char** - 16-bit rangin from 0 ('/u0000') to 65535 ('\uffff'). Default:'\u0000'
-
-- Strings are not primitive (java.lang.String) and are enclosed by double quotes.
+http://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/questions_variables.html
 
 ## Section 3: Using Operators and Decision Constructs
 

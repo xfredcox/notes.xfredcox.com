@@ -17,6 +17,48 @@
   - $ and leading _ are allowed but generally frowned upon
   - Single-words variables are lowercase, multi-word are camel case and contant value vars are upper-case with an underscore between words.
 
+- *literals* are the source code representation of a fixed value that doesn't require computation and don't require the keyword **new** on assignment. i.e:
+
+``java
+boolean result = true;
+char capitalC = 'C';
+byte b = 100;
+short s = 10000;
+int i = 100000;
+``
+
+  - **Integer Literals** 
+    - 0L / 0l for **long** otherwise int.
+    - **int** literals can be used to create **bute**, **short**, **int** and **long**
+    - Int literals can be represented as decimal, hexadecimal of binary as follows:
+    - You can place underscores between digits to improve readability (floats as well).
+
+``java
+int decVal = 26; // no prefix
+int hexVal = 0x1a; // prefix by 0x
+int binVal = 0b11010; // prefix by 0b
+``
+
+  - **Floating-Point Literals**
+    - **float** literals end with F or f otherwise **double** (optionally D/d)
+    - **float** can be coerced from F/f, D/d or E/e (sceintific notation). i.e.:
+
+``java
+double d1 = 123.4;
+double d2 = 1.234e2;
+float f1 = 123.4f;
+``
+
+  - **Character & String Literals**
+    - May contain any Unicode (UTF-16) either directly or through unicode escaping;
+    - Single quotes for **Char** literals, double quotes for **String**
+    - Special escape sequences: \b (backspace), \t (tab), \n (line feed), \f (form feed), \r (carriage return), \" (double quote, \' (single quote), \\ (backslash)
+
+  - **Class Literals**
+    - Represented by the class name followed by *.class*
+    - Type Class.
+
+
 Continues at http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
 
 ### Item 2: Define the structure of Java class

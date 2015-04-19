@@ -35,6 +35,7 @@ javac ./HelloWorld.java
 java HelloWorld
 ``
 
+
 ----
 
 ## Section 2: Working with Java Data Types

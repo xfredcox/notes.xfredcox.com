@@ -1,5 +1,9 @@
 # notes@xfredcox
 
+**Apr 20th - Apr 26th**
+
+- [Common Crawl] is blowing my mind. There are dozens and dozens of papers published from the corpus but it feels like there should be thousands. I'll try to post some highlight over this week.
+
 **Apr 13th - Apr 19th**
 
 - A little checklist on how to do a [IPython Server Setup in 5min]. The reverse proxy with web sockets enabled is particularly worth saving for future reference.

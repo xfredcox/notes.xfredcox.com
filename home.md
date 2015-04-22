@@ -2,7 +2,7 @@
 
 **Apr 20th - Apr 26th**
 
-- I've been using Firebase for a few different things. Their web interface is really handy at first, but as soon as you go into production and entries start growing, it becomes prohibitively slow. I'm considering building a small admin shell but haven't decided on the style - OO or similar to s3cmd...? [fb_node_admin on Github](https://github.com/xfredcox/fb_node_admin)
+- I've been using Firebase for a few different things. Their web interface is really handy at first, but as soon as you go into production and entries start growing, it becomes prohibitively slow. I'm considering building a small admin shell but haven't decided on the style - OO or similar to s3cmd...? [fb\_node\_admin on Github](https://github.com/xfredcox/fb_node_admin)
 - [Common Crawl] is blowing my mind. There are dozens and dozens of papers published from the corpus but it feels like there should be thousands. I'll try to post some highlight over this week.
 
 **Apr 13th - Apr 19th**

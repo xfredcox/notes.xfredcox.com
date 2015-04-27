@@ -1,5 +1,9 @@
 # notes@xfredcox
 
+**Apr 27th - Mar 3rd**
+
+- [Java Primer] - Study notes for the Oracle SE7 Certified Associate exam.
+
 **Apr 20th - Apr 26th**
 
 - I've been using Firebase for a few different things. Their web interface is really handy at first, but as soon as you go into production and entries start growing, it becomes prohibitively slow. I'm considering building a small admin shell but haven't decided on the style - OO or similar to s3cmd...? [fb\_node\_admin on Github](https://github.com/xfredcox/fb_node_admin)

@@ -35,6 +35,36 @@ javac ./HelloWorld.java
 java HelloWorld
 ``
 
+### Item 4: Import other Java packages to make them accessible in your code.
+ 
+- Provide access protection and name space management
+- Defined my *package pkg_name;* statement at the top of each .java file
+- Each source file can only have one package
+- In the absence of a **package** statement, types are set to an unamed package
+- The "fully qualified name" of a type includes the packages (ie. java.awt.Rectangle)
+- Package naming convention:
+  - Lower case
+  - Revers internet domain name
+- You can access package types by any of the following:
+  - Referring to the Package Member's qualified name
+  - Import a Package Member (ie. import graphics.Rectangle;)
+  - Import an Entire Member (ie. import graphics.*;)
+- Packages are not hierarchical in the sense that importing all types in java.awt will not expose types in java.awt.colors
+- Ambiguos imports are allowed, but must we called by qualified name (ie. graphics.Rectangle rect = new graphics.Rectangle();)
+- static imports
+  - When importing static attributesm you must refer to them using qualified names
+  - You can overrride this behaviour by using the *import static* keyword
+  - ie.
+ 
+  ``java
+  import static java.lang.Math.PI;
+  import static java.lang.Math.cos;
+  double r = cos(PI * 2);
+  ``
+ 
+- The compiler and JVM look for packages in the $CLASSPATH (ie. /home/fcox/classes/com/example/graphics)
+- The source files don't need to be places hierarchically in packages since the package statement defined the replationship for the compiler
+- each source file can only have one public type and it must have the same name as the file
 
 ----
 

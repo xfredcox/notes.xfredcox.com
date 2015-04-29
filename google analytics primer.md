@@ -48,7 +48,7 @@ ga('set', {
 ## Create Method
 
 ``javascript
-ga('create', 'UA-XXXX-Y', 'auto'); // args: method, web property ID, [cookie domain configuration\], [options\]
+ga('create', 'UA-XXXX-Y', 'auto'); // args: method, web property ID, [cookie domain configuration], [options]
 ``
 
 ## Event Tracking

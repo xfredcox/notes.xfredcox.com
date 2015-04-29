@@ -19,6 +19,27 @@ ga('send', 'pageview');
 
 > The JavaScript snippet above initially defines the ga function as a simple queue. All arguments passed to it are stored in an internal array. Once the analytics.js library is loaded, each call in the queue is executed and the ga function is redefined so all subsequent calls execute immediately. Initializing the ga function as a queue gives developers a consistent API to use regardless of whether the analytics.js library has finished loading.
 
+## The Tracker
+
+- Tracker objects collect and send data to you GA account
+- A tracker is initialised *in place*, since most sites will only have one tracker.
+
+``javascript
+ga('create', 'UA-XXXX-Y', 'auto');
+``
+
+- _Initialisation will store all the relevant metrics and will use this for their default values._ This is why updating the tracker location is the recommended solution for SPA pageview tracking.
+
+``javascript
+// Set a single field.
+ga('set', 'page', '/about');
+// Set multiple fields.
+ga('set', {
+  page: '/about',
+  title: 'About Us'
+});
+``
+
 ## Event Tracking
 
 Measure how users interact with the page

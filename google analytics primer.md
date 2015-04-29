@@ -53,6 +53,16 @@ ga(function(tracker) {
 });
 ``
 
+- You can use multiple trackers:
+
+``javascript
+ga('create', 'UA-XXXX-Y', 'auto'); // creates an unnamed, default tracket
+ga('create', 'UA-12345-6', 'auto', {'name': 'newTracker'});  // New (named) tracker.
+//
+ga('send', 'pageview'); // sends pageview to the default tracket
+ga('newTracker.send', 'pageview'); // Sends pageview to the new tracker
+``
+
 ## Create Method
 
 ``javascript

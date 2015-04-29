@@ -202,6 +202,25 @@ class Whatever {
 }
 ``
 
+### Item 2: Differentiate between object reference variables and primitive variables.
+ 
+**Numbers Classes**
+ 
+- Numbers classes build on the number primitives functionality by wrapping an object around them.
+- This happens at the compiler level (autoboxing) if you use a primitive where an object was expected.
+- The Number (base) class exposes methods for converting and comparing number types:
+ 
+``java
+double doubleValue();
+int compareTo(Byte anotherByte);
+boolean equals(Object obj);
+``
+ 
+**Integer Class**
+ 
+see methods: http://docs.oracle.com/javase/tutorial/java/data/numberclasses.html
+ 
+
 ## Section 3: Using Operators and Decision Constructs
 
 ## Section 4: Creating and Using Arrays

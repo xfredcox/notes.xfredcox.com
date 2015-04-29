@@ -59,8 +59,8 @@ ga(function(tracker) {
 ga('create', 'UA-XXXX-Y', 'auto', {}); // args: method, web property ID, [cookie domain configuration], [customisation options]
 ``
 
-- You can test GA form locahost by passing the *cookieDomain* option attribute value 'none';
-
+- Test GA form locahost by passing the *cookieDomain* option attribute value 'none';
+- Force SSL by passing the *cookieDomain* option attribute value true;
 
 
 ## Event Tracking

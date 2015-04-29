@@ -231,4 +231,60 @@ see methods: http://docs.oracle.com/javase/tutorial/java/data/numberclasses.html
 
 ## Section 7: Working with Inheritance
 
+### Item 1: Implement Inheritance
+
+**Inheritance**
+ 
+- derived / extended / child class vs. superclass / base / parent class
+- The subclass inherents everything (methods, variables, etc.). The constructor is not inherited, by can be called from the child class.
+ 
+``java
+public class MountainBike extends Bicycle { // SUBCLASSES Bicycle
+    // the MountainBike subclass adds one field
+    public int seatHeight;
+    // the MountainBike subclass has one constructor
+    public MountainBike(int startHeight,
+                        int startCadence,
+                        int startSpeed,
+                        int startGear) {
+        super(startCadence, startSpeed, startGear); // INVOKES PARENT CONTRUCTOR
+        seatHeight = startHeight;
+    }  
+        
+    // the MountainBike subclass adds one method
+    public void setHeight(int newValue) {
+        seatHeight = newValue;
+   }  
+}
+``
+ 
+- You can "hide" parent variables by declaring fields with the same name in the child class (though not recommended)
+- You can override methods.
+- If the child class is in the same module, the parent class' package-private members are visible.
+- All objects are subclasses of the Object class.
+ 
+**Casting**
+ 
+- Casting is the process of trasnforming one variable into aother variable type (class).
+- Downcasting = casting to a more "specific" object
+ 
+``java
+Object aSentenceObject = "This is just a regular sentence";
+String aSentenceString = (String)aSentenceObject;
+``
+ 
+- Upcasting = casting to a more generic object
+ 
+``java
+String aSentenceString = "This is just another regular sentence";
+Object aSentenceObject = (Object)aSentenceString;
+``
+ 
+- Upcasting is always permitted.
+- Downcasting may throw a run-time exception if the type can't be coerced. (ClassCastException)
+ 
+**Multiple Inheritance**
+ 
+TBC: http://docs.oracle.com/javase/tutorial/java/IandI/multipleinheritance.html
+
 ## Section 8: Handling Exceptions

@@ -70,6 +70,8 @@ java HelloWorld
 
 ## Section 2: Working with Java Data Types
 
+### Item 1: Declare & Initialise Variables
+
 - Java is *statically-typed*: all variables must be declared before being used.
 - Eight primitive types:
 
@@ -151,6 +153,54 @@ int[] anArray = {
 - The javautils.Arrays class offers several arrya manipulation methods.
 
 http://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/questions_variables.html
+
+**Initializing Fields**
+ 
+example:
+ 
+``java
+public class Test {
+    static{
+        System.out.println("Static");
+    }
+    {
+        System.out.println("Non-static block");
+    }
+    public static void main(String[] args) {
+        Test t = new Test();
+        Test t2 = new Test();
+    }
+}
+``
+ 
+- Static blocks:
+  - Gets called once when the class is defined
+ 
+``java
+static {
+    // whatever code is needed for class initialization goes here
+}
+``
+ 
+- Private static method initialization (alternative to static blocks)
+ 
+``java
+class Whatever {
+                public static varType myVar = initializeClassVariable();
+                private static varType initializeClassVariable() {
+                                // initialization code goes here
+                }
+}
+``
+ 
+- Initialization Blocks
+  - Get called every time an instance is constructed
+ 
+``java
+{
+    // whatever code is needed for instance initialization goes here
+}
+``
 
 ## Section 3: Using Operators and Decision Constructs
 

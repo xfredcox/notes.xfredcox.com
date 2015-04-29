@@ -72,6 +72,24 @@ ga('create', 'UA-XXXX-Y', 'auto', {}); // args: method, web property ID, [cookie
 - Test GA form locahost by passing the *cookieDomain* option attribute value 'none';
 - Force SSL by passing the *cookieDomain* option attribute value true;
 
+## Dimensions & Metrics
+
+- Used to send business data associated with a hit
+- Dimensions are strings and Metrics are numbers
+- Passed via option key *dimension\[0-9\]+* and *metric\[0-9\]+* (max 20 for free acounts)
+
+``javascript
+// Examples
+ga('set', 'dimension5', 'custom data');
+// or
+ga('send', 'event', 'category', 'action', {
+  'metric18': 8000
+});
+// or
+ga('send', 'pageview', {
+  'dimension15':  'My Custom Dimension'
+}); 
+``
 
 ## Event Tracking
 

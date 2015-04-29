@@ -91,6 +91,10 @@ ga('send', 'pageview', {
 }); 
 ``
 
+## Page Tracking
+
+TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/pages
+
 ## Event Tracking
 
 Measure how users interact with the page
@@ -99,4 +103,15 @@ Measure how users interact with the page
 
 ``javascript
 ga('send', 'event', 'button', 'click', 'nav buttons', 4);
+``
+
+## Exception Tracking
+
+``javascript
+ga('send', 'exception', {
+  'exDescription': 'DatabaseError',
+  'exFatal': false,
+  'appName', 'myApp',
+  'appVersion', '1.0'
+});
 ``

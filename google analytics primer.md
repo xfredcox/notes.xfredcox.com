@@ -45,13 +45,23 @@ ga('set', {
 });
 ``
 
+- You can retrieve tracker data from GA:
+
+``javascript
+ga(function(tracker) {
+  var defaultPage = tracker.get('page');
+});
+``
+
 ## Create Method
 
 ``javascript
-ga('create', 'UA-XXXX-Y', 'auto'); // args: method, web property ID, [cookie domain configuration], [customisation options]
+ga('create', 'UA-XXXX-Y', 'auto', {}); // args: method, web property ID, [cookie domain configuration], [customisation options]
 ``
 
 - You can test GA form locahost by passing the *cookieDomain* option attribute value 'none';
+
+
 
 ## Event Tracking
 

@@ -1,8 +1,27 @@
 # Google Analytics Primer
 
+## Implementation Snippet
+
+``markup
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-XXXX-Y', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+``
+
+## What does the implementation do?
+
+> The JavaScript snippet above initially defines the ga function as a simple queue. All arguments passed to it are stored in an internal array. Once the analytics.js library is loaded, each call in the queue is executed and the ga function is redefined so all subsequent calls execute immediately. Initializing the ga function as a queue gives developers a consistent API to use regardless of whether the analytics.js library has finished loading.
+
 ## Event Tracking
 
-- Measure how users interact with the page
+Measure how users interact with the page
 
 ![GA Event Tracking](-Jo5PpjgTUe7IbGzupgq)
 

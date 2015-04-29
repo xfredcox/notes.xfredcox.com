@@ -19,7 +19,7 @@ ga('send', 'pageview');
 
 > The JavaScript snippet above initially defines the ga function as a simple queue. All arguments passed to it are stored in an internal array. Once the analytics.js library is loaded, each call in the queue is executed and the ga function is redefined so all subsequent calls execute immediately. Initializing the ga function as a queue gives developers a consistent API to use regardless of whether the analytics.js library has finished loading.
 
-## Modifying Implemetation
+## Modifying Implementation
 
 - You can rename the global object by changing the last argument of the initialiser ('ga')
 - There's an alternative implementation that uses *async* script loading but downgrades for IE9. Recommended for primarily modern browser projects.
@@ -43,6 +43,12 @@ ga('set', {
   page: '/about',
   title: 'About Us'
 });
+``
+
+## Create Method
+
+``javascript
+ga('create', 'UA-XXXX-Y', 'auto'); // args: method, web property ID, [cookie domain configuration\], [options\]
 ``
 
 ## Event Tracking

@@ -288,3 +288,23 @@ Object aSentenceObject = (Object)aSentenceString;
 TBC: http://docs.oracle.com/javase/tutorial/java/IandI/multipleinheritance.html
 
 ## Section 8: Handling Exceptions
+
+### Item 1: Differentiate among checked exceptions, RuntimeException, and Error.
+
+- *Exception* == *Exceptional Event*
+- The call stack throws throws the exception until someone catches it (*exception handler*). If none is available, the runtime system (and therefore the program) terminates.
+- Types of Exception:
+  - Checked Exception 
+  - Unchecked Exceptions:
+    - Error
+    - Runtime Exception
+
+``java
+try {
+    // code...
+} catch (ExceptionType name) {
+    // code...
+} catch (ExceptionType name) {
+    // code...
+}
+``

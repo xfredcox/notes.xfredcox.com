@@ -121,4 +121,87 @@ ga('send', 'exception', {
   'appName', 'myApp',
   'appVersion', '1.0'
 });
+
+## Plugins
+
+``markup
+<script async src="myplugin.js"></script>
+``
+
+`` javavascript
+// Tracker initialization
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('require', 'myplugin');
+ga('send', 'pageview');
+``
+
+``javascript
+// Plugin definition
+//
+// Provides a plugin name and constructor function to analytics.js. This
+// function works even if the site has customized the ga global identifier.
+function providePlugin(pluginName, pluginConstructor) {
+  var ga = window[window['GoogleAnalyticsObject'] || 'ga'];
+  if (ga) ga('provide', pluginName, pluginConstructor);
+}
+// Plugin constructor.
+function MyPlugin(tracker) {
+  alert('Loaded myplugin on tracker ' + tracker.get('name'));
+}
+// Register the plugin.
+providePlugin('myplugin', MyPlugin); // handles async nature of loads
+``
+
+**Config**
+
+``javascript
+// Importing 
+ga('require', 'localHitSender', {path: '/log', debug: true});
+// Implementation
+function LocalHitSender(tracker, config) {
+  this.url = config.url;
+  this.debug = config.debug;
+  if (this.debug) {
+    alert('Enabled local hit sender for: ' + this.url);
+  }
+}
+providePlugin('localHitSender', LocalHitSender);
+``
+
+**Custom Methods**
+
+``javascript
+// Generic
+ga('[targetName.][pluginName:]methodName', ...);
+``
+
+``javascript
+// Execute the 'doStuff' method using the 'myplugin' plugin.
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('require', 'myplugin');
+ga('myplugin:doStuff');
+// Execute the 'setEnabled' method of the 'hitCopy' plugin on tracker 't3'.
+ga('create', 'UA-XXXXX-Y', 'auto', {name: 't3'});
+ga('t3.require', 'hitcopy');
+ga('t3.hitcopy:setEnabled', false);
+``
+
+``javascript
+// myplugin constructor.
+var MyPlugin = function(tracker) {
+};
+
+// myplugin:doStuff method definition.
+MyPlugin.prototype.doStuff = function() {
+  alert('doStuff method called!');
+};
+
+// hitcopy plugin.
+var HitCopy = function(tracker) {
+};
+
+// hitcopy:setEnabled method definition.
+HitCopy.prototype.setEnabled = function(isEnabled) {
+  this.isEnabled = isEnabled;
+}:
 ``

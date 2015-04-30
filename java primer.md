@@ -304,7 +304,39 @@ try {
     // code...
 } catch (ExceptionType name) {
     // code...
-} catch (ExceptionType name) {
-    // code...
+} catch (IOException|SQLException ex) {
+    logger.log(ex);
+    throw ex;
 }
 ``
+
+- *catch* statements with multiple exception types have implicitly *final* parameters
+
+``java
+// clean-up code to prevent resource leaks (without try-with-resource statement)
+finally {
+    if (out != null) { 
+        System.out.println("Closing PrintWriter");
+        out.close(); 
+    } else { 
+        System.out.println("PrintWriter not open");
+    } 
+} 
+``
+
+- try-with-resource can be used with any object that implements the java.lang.AutoCloseable / java.io.Closeable 
+
+``java
+try (
+        java.util.zip.ZipFile zf =
+             new java.util.zip.ZipFile(zipFileName);
+        java.io.BufferedWriter writer = 
+            java.nio.file.Files.newBufferedWriter(outputFilePath, charset)
+    ) { 
+// code...
+}
+``
+
+- **Suppressed Exceptions** can occur when exception handlers introduce new exceptions (ie. erro closing a file that raised an exception). The suppressed exceptions are available in the Throwable.getSuppressed method of the exception thrown.
+
+- TBC: http://docs.oracle.com/javase/tutorial/essential/exceptions/putItTogether.html

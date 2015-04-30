@@ -218,4 +218,7 @@ ga('set', {
   - Use a different tracker to emulate a refresh
   - Change the tracker location value*
   - Change the tracker referee value*
+
 \* Internally, GA will adjust your navigation paths from the pageview hits you send.
+
+

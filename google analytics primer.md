@@ -202,3 +202,20 @@ HitCopy.prototype.setEnabled = function(isEnabled) {
   this.isEnabled = isEnabled;
 }:
 ``
+
+## SPA Considerations
+
+- Updating the tracker page value is the recommended approach to getting the routing info right. You can do it at the hit level as well, but you would have to repeat the same values for event or social hits.
+
+``javascript
+ga('set', {
+  page: '/new-page',
+  title: 'New Page'
+});
+``
+
+- DO NOT:
+  - Use a different tracker to emulate a refresh
+  - Change the tracker location value*
+  - Change the tracker referee value*
+\* Internally, GA will adjust your navigation paths from the pageview hits you send.

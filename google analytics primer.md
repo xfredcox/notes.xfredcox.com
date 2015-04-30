@@ -223,8 +223,10 @@ ga('set', {
 
 ## Social Interaction Tracking
 
+![Social Interaction Tracking](-JoAgHHJy6awBR52KJ53)
 
-
-
-
-![Alt text](-JoAgHHJy6awBR52KJ53)
+``javascript 
+FB.Event.subscribe('edge.create', function(targetUrl) {
+  ga('send', 'social', 'facebook', 'like', targetUrl);
+});
+``

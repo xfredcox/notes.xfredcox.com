@@ -190,16 +190,13 @@ ga('t3.hitcopy:setEnabled', false);
 // myplugin constructor.
 var MyPlugin = function(tracker) {
 };
-
 // myplugin:doStuff method definition.
 MyPlugin.prototype.doStuff = function() {
   alert('doStuff method called!');
 };
-
 // hitcopy plugin.
 var HitCopy = function(tracker) {
 };
-
 // hitcopy:setEnabled method definition.
 HitCopy.prototype.setEnabled = function(isEnabled) {
   this.isEnabled = isEnabled;

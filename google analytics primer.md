@@ -95,6 +95,13 @@ ga('send', 'pageview', {
 
 ![GA Page Tracking](-JoAYoIZOTMRWGeAHNWJ)
 
+``javascript
+ga('send', 'pageview', {
+  'page': '/my-overridden-page?id=1',
+  'title': 'my overridden page'
+});
+``
+
 ## Event Tracking
 
 Measure how users interact with the page

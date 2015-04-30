@@ -93,7 +93,7 @@ ga('send', 'pageview', {
 
 ## Page Tracking
 
-
+![GA Page Tracking](-JoAYoIZOTMRWGeAHNWJ)
 
 ## Event Tracking
 
@@ -115,5 +115,3 @@ ga('send', 'exception', {
   'appVersion', '1.0'
 });
 ``
-
-![Alt text](-JoAYoIZOTMRWGeAHNWJ)

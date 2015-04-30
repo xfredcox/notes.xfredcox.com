@@ -1,5 +1,7 @@
 # Google Analytics Primer
 
+----
+
 ## Implementation Snippet
 
 ``markup
@@ -245,6 +247,8 @@ TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/ta
 ## User Timing Tracking
 
 TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
+
+----
 
 # The Platform 
 

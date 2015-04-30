@@ -230,3 +230,23 @@ FB.Event.subscribe('edge.create', function(targetUrl) {
   ga('send', 'social', 'facebook', 'like', targetUrl);
 });
 ``
+
+## User ID Setting
+
+``javascript
+ga('create', 'UA-XXXX-Y', { 'userId': 'USER_ID' });
+ga('send', 'pageview');
+``
+
+## Tasks
+
+TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks
+
+## User Timing Tracking
+
+TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
+
+# The Platform 
+
+TBC: https://developers.google.com/analytics/devguides/platform/
+

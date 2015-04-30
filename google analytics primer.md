@@ -93,7 +93,7 @@ ga('send', 'pageview', {
 
 ## Page Tracking
 
-TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/pages
+
 
 ## Event Tracking
 

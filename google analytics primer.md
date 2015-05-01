@@ -282,7 +282,26 @@ ga('send', 'pageview');
 
 ## User Timing Tracking
 
+![User Timing](-JoD0QVPPYxjqFczihuf)
 
+``javascrtipt
+var startTime;
+function loadJs(url, callback) {
+  var js = document.createElement('script');
+  js.async = true;
+  js.src = url;
+  var s = document.getElementsByTagName('script')[0];
+  js.onload = callback;
+  startTime = new Date().getTime();
+  s.parentNode.insertBefore(js, s);
+}
+function trackTimingCallback(event) {
+  var endTime = new Date().getTime();
+  var timeSpent = endTime - startTime;
+  ga('send', 'timing', 'jQuery', 'Load Library', timeSpent, 'Google CDN');
+  // Library has loaded. Now you can use it.
+};
+``
 
 ----
 
@@ -290,5 +309,3 @@ ga('send', 'pageview');
 
 TBC: https://developers.google.com/analytics/devguides/platform/
 
-
-![Alt text](-JoD0QVPPYxjqFczihuf)

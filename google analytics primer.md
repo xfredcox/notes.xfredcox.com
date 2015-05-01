@@ -242,15 +242,50 @@ ga('send', 'pageview');
 
 ## Tasks
 
-TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks
+- Tasks process the measurement protocol request for transmition (ie. validation, checks, building payload, sending etc).
+- You can't really create a new task, but you can chain your functionality to an existing entry, for instance:
+
+``javascript
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga(function(tracker) {
+  // Grab a reference to the default sendHitTask function.
+  var originalSendHitTask = tracker.get('sendHitTask');
+  // Modifies sendHitTask to send a copy of the request to a local server after
+  // sending the normal request to www.google-analytics.com/collect.
+  tracker.set('sendHitTask', function(model) {
+    originalSendHitTask(model);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/localhits', true);
+    xhr.send(model.get('hitPayload'));
+  });
+});
+ga('send', 'pageview');
+``
+
+- You can abort processing by throwing an exception:
+
+``javascript
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga(function(tracker) {
+  var originalBuildHitTask = tracker.get('buildHitTask');
+  tracker.set('buildHitTask', function(model) {
+    if (document.cookie.match(/testing=true/)) {
+      throw 'Aborted tracking for test user.';
+    }
+    originalBuildHitTask(model);
+  });
+});
+ga('send', 'pageview');
+``
+
+- You can disable a task by setting its value to null.
 
 ## User Timing Tracking
 
-TBC: https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
+
 
 ----
 
 # The Platform 
 
 TBC: https://developers.google.com/analytics/devguides/platform/
-

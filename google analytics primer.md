@@ -289,3 +289,6 @@ ga('send', 'pageview');
 # The Platform 
 
 TBC: https://developers.google.com/analytics/devguides/platform/
+
+
+![Alt text](-JoD0QVPPYxjqFczihuf)

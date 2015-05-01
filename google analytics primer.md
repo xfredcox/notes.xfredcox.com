@@ -130,7 +130,7 @@ ga('send', 'exception', {
 <script async src="myplugin.js"></script>
 ``
 
-``javavascript
+``javascript
 // Tracker initialization
 ga('create', 'UA-XXXXX-Y', 'auto');
 ga('require', 'myplugin');

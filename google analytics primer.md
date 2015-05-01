@@ -284,7 +284,7 @@ ga('send', 'pageview');
 
 ![User Timing](-JoD0QVPPYxjqFczihuf)
 
-``javascrtipt
+``javascript
 var startTime;
 function loadJs(url, callback) {
   var js = document.createElement('script');
@@ -307,5 +307,5 @@ function trackTimingCallback(event) {
 
 # The Platform 
 
-TBC: https://developers.google.com/analytics/devguides/platform/
+
 

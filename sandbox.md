@@ -20,7 +20,7 @@
   - app-router
   - core-animated-pages
   - firebase-element
-- D3.js
+- D3.js 
   - Highcharts
 - Stripe/Firebase NPM Package
 - Bootstrap Feature
@@ -51,7 +51,7 @@
  
 # Drafts
 
-- [Google Analytics Primer]
+- [Pydata Dallas 2015]
 - [Marked] vs. [Markdown.js]
 - [NGINX & Websockets] 
 - [NGINX Routing]
@@ -65,4 +65,4 @@
 
 # Backlog
 
-...
+- [Google Analytics Primer]

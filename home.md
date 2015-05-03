@@ -1,6 +1,10 @@
 # notes@xfredcox
 
-**Apr 27th - Mar 3rd**
+**May 4th - May 10th**
+
+- [Google Analytics Primer]
+
+**Apr 27th - May 3rd**
 
 - [Java Primer] - Study notes for the Oracle SE7 Certified Associate exam.
 

@@ -64,5 +64,3 @@
 ----
 
 # Backlog
-
-- [Google Analytics Primer]

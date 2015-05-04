@@ -339,4 +339,128 @@ try (
 
 - **Suppressed Exceptions** can occur when exception handlers introduce new exceptions (ie. erro closing a file that raised an exception). The suppressed exceptions are available in the Throwable.getSuppressed method of the exception thrown.
 
-- TBC: http://docs.oracle.com/javase/tutorial/essential/exceptions/putItTogether.html
+**Checked vs Unchecked Excpetions**
+
+ 
+
+- Unchecked exceptions are "defects in the program" - often invalid arguments to non-private methods. They subclass *RuntimeException* and "reflect errors in your program's logic and cannot be reasonably recovered from at run time".
+
+- Checked exceptions are "invalid conditions in areas outside the immediate control of the program", such as invalid user input, database problems, network outages, absent files, etc. These are subclasses of exception. Methods are obliged to establish a policy for all checked exceptions (handle or throw).
+
+- Any exception that can be thrown from a method is part of its API (Checked Exceptions)
+
+ 
+
+**Exception Throwing**
+
+ 
+
+- If you can't assume the use cases for a method, it is sometimes better to throw exceptions up the stack instead of handling them
+
+- To allow methods to throw checked exceptions, you must specify a *throw* clause.
+
+- *Throwable* API exposes methods to inspect the exception chain: *getCause()*, *initCause(Throwable)*, Throwable(String, Throwable), Throwable(Throwable), *getStackTrace()*, etc.
+
+ 
+
+``java
+
+// Chain of Exception
+
+try {
+
+  // code
+
+} catch (IOException e) {
+
+    throw new SampleException("Other IOException", e);
+
+}
+
+``
+
+ 
+
+**Stack Trace**
+
+ 
+
+``java
+
+// Stack Trace Inpection
+
+catch (Exception cause) {
+
+    StackTraceElement elements[] = cause.getStackTrace();
+
+    for (int i = 0, n = elements.length; i < n; i++) {      
+
+        System.err.println(elements[i].getFileName()
+
+            + ":" + elements[i].getLineNumber()
+
+            + ">> "
+
+            + elements[i].getMethodName() + "()");
+
+    }
+
+}
+
+``
+
+ 
+
+``java
+
+// Stack Tracing with Logging
+
+try {
+
+    Handler handler = new FileHandler("OutFile.log");
+
+    Logger.getLogger("").addHandler(handler); 
+
+} catch (IOException e) {
+
+    Logger logger = Logger.getLogger("package.name");
+
+    StackTraceElement elements[] = e.getStackTrace();
+
+    for (int i = 0, n = elements.length; i < n; i++) {
+
+        logger.log(Level.WARNING, elements[i].getMethodName());
+
+    }
+
+}
+
+``
+
+ 
+
+**Custom Exceptions**
+
+ 
+
+- One strong motivation to create a higher level exception is when you want to be able to catch all exceptions uncer one class (ie. a *LinedListException* could be thrown off an *InvalidIndexException* or a *ObjectNotFoundException*)
+
+- Include the word *Excpetion* in the class name for readbility.
+
+- Most often subclassed from *Exception*.
+
+ 
+
+**Advantages of Exceptions**
+
+ 
+
+- Separating Error-Handling Code from "Regular" Code
+
+- Propagating Errors Up the Call Stack
+
+- Grouping and Differentiating Error Types
+
+ 
+
+ 

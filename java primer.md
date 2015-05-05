@@ -1,7 +1,5 @@
 # Java Primer
 
-----
-
 ## Section 1: Java Basics
 
 ### Item 1: Define the scope of variables

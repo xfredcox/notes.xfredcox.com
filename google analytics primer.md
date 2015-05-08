@@ -2,8 +2,6 @@
 
 ----
 
-----
-
 ## Implementation Snippet
 
 ``markup

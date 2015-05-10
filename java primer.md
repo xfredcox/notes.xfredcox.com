@@ -654,9 +654,254 @@ test:
  
 - Return statements are also a branching technique (returning control to the function the current function)
 
-## Section 6: Working with Methods and Encapsulation
-
-## Section 7: Working with Inheritance
+# Section 6: Working with Methods and Encapsulation
+ 
+### Item 1: Create methods with arguments and return values.
+ 
+### Item 2: Apply the static keyword to methods and fields.
+ 
+- Class methods (ie. static) can be acced through the object name. They can also be called from the instance, but this is discouraged as it makes things unclear.
+ 
+### Item 3: Create an overloaded method.
+ 
+- Java can distinguish between methods with different method signatures, allowing you to create overloaded methods.
+ 
+ 
+### Item 4: Differentiate between default and user-defined constructors.
+ 
+- Constructors have no return type.
+- Constructors are called by the *new* operator to instanciate an object.
+- Defaults to no-argument contructor of superclass if necessary.
+ 
+### Item 5: Apply access modifiers.
+### Item 6: Apply encapsulation principles to a class.
+ 
+- Inner classes are those non-static declared inside the scope of another class.
+- Inner classes can be regular, *local classes* (defined within a block / method) and *anonymous classes* (defined within a method and unamed).
+- You cannot declare a static field inside a local class. Similarly, you can't define an interface, since those are inherently static. (Except for compile-time constant expressions.)
+ 
+``java
+public class HelloWorldAnonymousClasses {
+    interface HelloWorld {
+        public void greet();
+        public void greetSomeone(String someone);
+    }
+      public void sayHello() {
+         class EnglishGreeting implements HelloWorld {
+            String name = "world";
+            public void greet() {
+                greetSomeone("world");
+            }
+            public void greetSomeone(String someone) {
+                name = someone;
+                System.out.println("Hello " + name);
+            }
+        }
+        HelloWorld englishGreeting = new EnglishGreeting();
+        // Anonymous class
+        HelloWorld frenchGreeting = new HelloWorld() {
+            String name = "tout le monde";
+            public void greet() {
+                greetSomeone("tout le monde");
+            }
+            public void greetSomeone(String someone) {
+                name = someone;
+                System.out.println("Salut " + name);
+            }
+        };
+}
+``
+ 
+- The anonymous class requires:
+  - The *new* operator
+  - The interface or class that it implements / extends
+  - Parenthesis containing the constructor arguments
+  - Body of the class declaration
+ 
+  - Non-static nested classes have access to other members of the enclosing class (private or not). Static classes do not.
+ 
+  ``java
+  // Static Nested Class
+  OuterClass.StaticNestedClass nestedObject = new OuterClass.StaticNestedClass();
+  // Non-static Inner Class
+  OuterClass.InnerClass innerObject = outerObject.new InnerClass();
+  ``
+ 
+- **Shadowing** refers to hiding a variable within a nested class by defining a new value in the current scope which masks the higher level scope.
+ 
+- The following method shadows x and y. To access the class x/y values, use the qualified name (*this*)
+ 
+``java
+public class Circle {
+    private int x, y, radius;
+    public void setOrigin(int x, int y) {
+        ...
+    }
+}
+``
+ 
+### Item 7: Determine the effect upon object references and primitive values when they are passed into methods that change the values.
+ 
+**varargs**
+ 
+``java
+public Polygon polygonFrom(Point... corners) {}
+public PrintStream printf(String format, Object... args) {}
+``
+**Value vs Reference**
+ 
+- Primitives are always passed by value
+- Object references are also passed by value
+- Objects themselves are reference, so changing a field will also change the object.
+ 
+``java
+public void moveCircle(Circle circle, int deltaX, int deltaY) {
+    // code to move origin of circle to x+deltaX, y+deltaY
+    circle.setX(circle.getX() + deltaX);
+    circle.setY(circle.getY() + deltaY);
+       
+    // code to assign a new reference to circle
+    circle = new Circle(0, 0);
+}
+moveCircle(myCircle, 23, 56)
+``
+> Inside the method, circle initially refers to myCircle. The method changes the x and y coordinates of the object that circle references (i.e., myCircle) by 23 and 56, respectively. These changes will persist when the method returns. Then circle is assigned a reference to a new Circle object with x = y = 0. This reassignment has no permanence, however, because the reference was passed in by value and cannot change. Within the method, the object pointed to by circle has changed, but, when the method returns, myCircle still references the same Circle object as before the method was called.
+ 
+# Section 7: Working with Inheritance
+ 
+### Item 1: Implement inheritance.
+ 
+- The *@Override* annotation tells the compiler you intend to overrride a method, so the compiler will inforce the superclass to contain said method or throw an error.
+ 
+- Overriden static methods can still be invoked from the superclass object.
+ 
+TBC: http://docs.oracle.com/javase/tutorial/java/IandI/override.html
+ 
+### Item 2: Develop code that demonstrates the use of polymorphism.
+ 
+### Item 3: Differentiate between the type of a reference and the type of an object.
+ 
+### Item 4: Determine when casting is necessary.
+ 
+``java
+Object obj = new MountainBike();
+MountainBike myBike = (MountainBike)obj;
+// or
+if (obj instanceof MountainBike) {
+    MountainBike myBike = (MountainBike)obj;
+}
+``
+ 
+### Item 5: Use super and this to access objects and constructors.
+ 
+**super**
+ 
+``java
+public MountainBike(int startHeight,
+                    int startCadence,
+                    int startSpeed,
+                    int startGear) {
+    super(startCadence, startSpeed, startGear);
+    seatHeight = startHeight;
+}  
+``
+ 
+``java
+public class Subclass extends Superclass {
+    // overrides printMethod in Superclass
+    public void printMethod() {
+        super.printMethod();
+        System.out.println("Printed in Subclass");
+    }
+    public static void main(String[] args) {
+        Subclass s = new Subclass();
+        s.printMethod();   
+    }
+}
+``
+ 
+**this**
+ 
+``java
+public class Rectangle {
+    private int x, y;
+    private int width, height;     
+    public Rectangle() {
+        this(0, 0, 1, 1);
+    }
+    public Rectangle(int width, int height) {
+        this(0, 0, width, height);
+    }
+    public Rectangle(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+    ...
+}
+``
+ 
+### Item 6: Use abstract classes and interface
+ 
+- Abstract classes are declared without implementation.
+- Abstract classes cannot be instantiated but can be subclassed.
+- Classes containing abstract methods must be declared abstrct themselves.
+ 
+``java
+abstract void moveTo(double deltaX, double deltaY);
+// or
+public abstract class GraphicObject {
+   // declare fields
+   // declare nonabstract methods
+   abstract void draw();
+}
+``
+ 
+``java
+abstract class GraphicObject {
+    int x, y;
+    ...
+    void moveTo(int newX, int newY) {
+        ...
+    }
+    abstract void draw();
+    abstract void resize();
+}
+//
+class Circle extends GraphicObject {
+    void draw() {
+        ...
+    }
+    void resize() {
+        ...
+    }
+}
+class Rectangle extends GraphicObject {
+    void draw() {
+        ...
+    }
+    void resize() {
+        ...
+    }
+}
+``
+ 
+**Interfaces**
+ 
+- Interfaces are contracts for software interaction.
+ 
+``java
+public interface GroupedInterface extends Interface1, Interface2, Interface3 {
+    // constant declarations
+    // base of natural logarithms
+    double E = 2.718282;
+    // method signatures
+    void doSomething (int i, double x);
+    int doSomethingElse(String s);
+}
+``
+TBC: http://docs.oracle.com/javase/tutorial/java/IandI/usinginterface.html
 
 ### Item 1: Implement Inheritance
 

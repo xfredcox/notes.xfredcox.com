@@ -217,6 +217,149 @@ boolean equals(Object obj);
  
 see methods: http://docs.oracle.com/javase/tutorial/java/data/numberclasses.html
  
+### Item 3: Read or Write to Object Fields
+ 
+**Access Modifiers**
+ 
+- *public* - accessible from all classes
+- *protected* - accessible from subclasses, but not instances
+- *package-private* (default) - accessible from the package, but not subsclasses
+- *private* - accessible only from its own class
+ 
+**Creating Objects**
+ 
+- Declaration - associates a variable name with an object type
+- Instantiation - the *new* keyword creates the object
+- Initialization - the *new* operator followed by a contructor
+ 
+- Java support method overloading - having functions with the same name but which take different parameter types, be different function. You can therefore have different constructor methods depending on what parameters are passed.
+ 
+- The default constructor is a no-argument constructor which calls the parent class' no-argument constructor.
+ 
+- Java does automatic garbage collection when references to an object are out of scope or non-existant
+
+ 
+### Item 4: Explain an Object's Lifecycle
+ 
+ 
+### Item 5: Call methods on objects
+ 
+- If you try to return a value for a method declared void, a compiler error will be thrown.
+ 
+**this Keyword**
+ 
+``java
+public class Rectangle {
+    private int x, y;
+    private int width, height;
+       
+    public Rectangle() {
+        this(0, 0, 1, 1);
+    }
+    public Rectangle(int width, int height) {
+        this(0, 0, width, height);
+    }
+    public Rectangle(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+    ...
+}
+``
+ 
+### Item 6: Manipulate data using the *StringBuilder* class and its methods
+ 
+- *StringBuilder* objects are like strings but mutable. (variable-length arrays of chars).
+- In addition to *length()*, StringBuilders have a *capacity()* value which auto expands if necessary. Defaults to 16.
+- StringBuilder are especially usefull for concatenating strings.
+- Most methods are overloaded and *in place* operations.
+ 
+**Constructors**
+ 
+- StringBuilder()
+- StringBuilder(CharSequence cs)
+- StringBuilder(int initCapacity)
+- StringBuilder(String s)
+ 
+**Methods**
+ 
+- void setLength(int newLength) - Truncates or appends nulls accordingly.
+- void ensureCapacity(int minCapacity) - Ensures capacity is at least minCapacity.
+- StringBuilder append(String s) - Overloaded method, converts type and appends to the end of StringBuilder.
+- StringBuilder delete(int start, int end)
+- StringBuilder insert(int offset, String s
+- StringBuilder replace(int start, int end, String s)
+- void setCharAt(int index, char c)
+- StringBuilder reverse()
+- String toString()
+ 
+### Item 7: Create and Manipulate Strings
+ 
+- 13 Contructors to choose from:
+ 
+``java
+String greeting = "Hello world!";
+//
+char[] helloArray = { 'h', 'e', 'l', 'l', 'o', '.' };
+String helloString = new String(helloArray);
+// etc.
+``
+ 
+**Methods**
+ 
+- String length()
+- String concat(String s) - Same as "+"
+- char charAt(int i)
+- String substring(int beginIndex, int endIndex)
+- CharSequence subSequence(int beginIndex, int endIndex)
+- String[] split(String regex, int limit)
+- String trim() - returns a copy w/ trimmed leading and trailing whitespaces removed.
+- String toLowerCase()
+- String toUpperCase()
+- int indexOf(String str)
+- int lastIndexOf(String str)         
+- boolean contains(CharSequence s)
+- String replace(CharSequence target, CharSequence replacement)
+- String replaceAll(String regex, String replacement)
+- String replaceFirst(String regex, String replacement)
+- boolean endsWith(String suffix)
+- boolean startsWith(String prefix)
+- boolean matches(String regex)
+- etc.
+ 
+**Format Strings**
+ 
+``java
+String fs;
+fs = String.format("The value of the float " +
+                   "variable is %f, while " +
+                   "the value of the " +
+                   "integer variable is %d, " +
+                   " and the string is %s",
+                   floatVar, intVar, stringVar);
+System.out.println(fs);
+``
+ 
+**Converting Between Numbers & String**
+ 
+``java
+float a = (Float.valueOf(args[0])).floatValue();
+float b = (Float.valueOf(args[1])).floatValue();
+// or
+float a = Float.parseFloat(args[0]);
+float b = Float.parseFloat(args[1]);
+``
+ 
+``java
+String s1 = "" + i;
+// or
+String s2 = String.valueOf(i);
+// or
+String s3 = Integer.toString(i);
+String s4 = Double.toString(d);
+``
 
 ## Section 3: Using Operators and Decision Constructs
 

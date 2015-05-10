@@ -361,11 +361,298 @@ String s3 = Integer.toString(i);
 String s4 = Double.toString(d);
 ``
 
-## Section 3: Using Operators and Decision Constructs
-
-## Section 4: Creating and Using Arrays
-
-## Section 5: Using Loop Constructs
+# Section 3: Using Operators & Decision Constructs
+ 
+### Item 1: Use Java Operators
+ 
+**Operators & Precedence**
+ 
+postfix  expr++ expr--
+unary    ++expr --expr +expr -expr ~ !
+multiplicative     * / %
+additive                + -
+shift       << >> >>>
+relational             < > <= >= instanceof
+equality                == !=
+bitwise AND       &
+bitwise exclusive OR       ^
+bitwise inclusive OR        |
+logical AND         &&
+logical OR             ||
+ternary ? :
+assignment         = += -= *= /= %= &= ^= |= <<= >>= >>>=
+ 
+**Prefix vs Postfix Increment Operator**
+ 
+``java
+        System.out.println(i);
+        // prints 6
+        System.out.println(++i);
+        // prints 6
+        System.out.println(i++);
+        // prints 7
+``
+ 
+**instanceOf Comparison Operator**
+ 
+``java
+obj1 instanceof Parent
+``
+ 
+**Bitwise & Bitshift Operators**
+ 
+...
+ 
+### Item 2: Use parentheses to override operator precendence
+ 
+- Statements can be *Expression Statements*, *Declaration Statements*, or *Control Flow Statements*
+- Expression and declaration statements end with ";
+- Blocks are groups of zero or more statements between balanced braces
+ 
+### Item 3: Test equality between strings and other objects using == and equals()
+ 
+**Object Class Methods**
+ 
+- protected Object clone() throws CloneNotSupportedException
+- public boolean equals(Object obj)
+- protected void finalize() throws Throwable - Called by the garbage collector on an object when garbage collection determines that there are no more references to the object
+- public final Class getClass()
+- public int hashCode() - Returns a hash code value for the object.
+- public String toString()
+- Threading-related Methods
+  - public final void notify()
+  - public final void notifyAll()
+  - public final void wait()
+  - public final void wait(long timeout)
+  - public final void wait(long timeout, int nanos)
+ 
+**Notes**
+ 
+- The default clone method needs to be overriden if the subclass of Object contains references to external objects.
+- The equals method uses "==" for primitives, but tests reference equality for Objects and so will most likely require overriding.
+ 
+### Item 4: Create and use if-else constructs.
+ 
+``java
+if (testscore >= 90) {
+            grade = 'A';
+        } else if (testscore >= 80) {
+            grade = 'B';
+        } else if (testscore >= 70) {
+            grade = 'C';
+        } else if (testscore >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+``
+ 
+### Item 5: Use a switch statement.
+ 
+``java
+switch (month) {
+            case 1:  monthString = "January";
+                     break;
+            case 2:  monthString = "February";
+                     break;
+            case 3:  monthString = "March";
+                     break;
+            case 4:  monthString = "April";
+                     break;
+            case 5:  monthString = "May";
+                     break;
+            case 6:  monthString = "June";
+                     break;
+            case 7:  monthString = "July";
+                     break;
+            case 8:  monthString = "August";
+                     break;
+            case 9:  monthString = "September";
+                     break;
+            case 10: monthString = "October";
+                     break;
+            case 11: monthString = "November";
+                     break;
+            case 12: monthString = "December";
+                     break;
+            default: monthString = "Invalid month";
+                     break;
+        }
+``
+ 
+``java
+        switch (month) {
+            case 1:  futureMonths.add("January");
+            case 2:  futureMonths.add("February");
+            case 3:  futureMonths.add("March");
+            case 4:  futureMonths.add("April");
+            case 5:  futureMonths.add("May");
+            case 6:  futureMonths.add("June");
+            case 7:  futureMonths.add("July");
+            case 8:  futureMonths.add("August");
+            case 9:  futureMonths.add("September");
+            case 10: futureMonths.add("October");
+            case 11: futureMonths.add("November");
+            case 12: futureMonths.add("December");
+                     break;
+            default: break;
+        }
+``
+ 
+``java
+switch (month) {
+            case 1: case 3: case 5:
+            case 7: case 8: case 10:
+            case 12:
+                numDays = 31;
+                break;
+            case 4: case 6:
+            case 9: case 11:
+                numDays = 30;
+                break;
+            case 2:
+                if (((year % 4 == 0) &&
+                     !(year % 100 == 0))
+                     || (year % 400 == 0))
+                    numDays = 29;
+                else
+                    numDays = 28;
+                break;
+            default:
+                System.out.println("Invalid month.");
+                break;
+        }
+``
+ 
+# Section 4: Creating and Using Arrays
+ 
+### Item 1: Declare, instantiate, initialize and use a one-dimensional array.
+ 
+``java
+// declares an array of integers
+int[] anArray;
+// allocates memory for 10 integers
+anArray = new int[10];    
+// initialize first element
+anArray[0] = 100;
+``
+ 
+**Copying Arrays**
+ 
+- public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length) - System.arraycopy(...)
+- char[] copyTo = java.util.Arrays.copyOfRange(copyFrom, 2, 9);
+ 
+### Item 2: Declare, instantiate, initialize and use a multi-dimensional array
+ 
+``java
+int[] anArray = {
+    100, 200, 300,
+    400, 500, 600,
+    700, 800, 900, 1000
+};
+// or
+String[][] names = {
+            {"Mr. ", "Mrs. ", "Ms. "},
+            {"Smith", "Jones"}
+        };
+``
+ 
+### Item 3: Declare and use an ArrayList.
+ 
+- Two list implementations in Java:
+  - ArrayList
+  - LinkedList
+ 
+... TBC ...
+ 
+http://docs.oracle.com/javase/tutorial/collections/interfaces/list.html
+ 
+# Section 5: Using Loop Constructs
+ 
+### Item 1: Create and use while loops.
+### Item 3: Create and use do-while loops.
+ 
+ 
+``java
+int count = 1;
+while (count < 11) {
+  System.out.println("Count is: " + count);
+  count++;
+}
+//
+int count = 1;
+do {
+  System.out.println("Count is: " + count);
+  count++;
+} while (count < 11);
+``
+ 
+### Item 2: Create and use for loops including the enhanced for loop.
+ 
+``java
+for (initialization; termination;
+     increment) {
+    statement(s)
+}
+``
+ 
+- If the initialization variable doesn't need to be used outside the scope of the loop it is best to define it in the loop definition.
+ 
+``java
+// Inifinite Loop
+for ( ; ; ) {
+   
+    // your code goes here
+}
+``
+ 
+``java
+// Enhanced For Loop
+int[] numbers = {1,2,3,4,5,6,7,8,9,10};
+for (int item : numbers) {
+  System.out.println("Count is: " + item);
+}
+``
+ 
+### Item 4: Compare loop constructs.
+### Item 5: Use break and continue.
+ 
+- **Unlabeled** *break* statement exits a for, while or do-while statement or a switch statement.
+- **Labeled** *break* exits the named outer loop:
+ 
+``java
+search:
+  for (i = 0; i < arrayOfInts.length; i++) {
+      for (j = 0; j < arrayOfInts[i].length;
+            j++) {
+            if (arrayOfInts[i][j] == searchfor) {
+               foundIt = true;
+               break search;
+            }
+      }
+  }
+``
+ 
+- The unlabeled *continue* statement skips the current iteration/
+- The labeled *continue* statement skips the named loop's current iteration.
+ 
+``java
+test:
+        for (int i = 0; i <= max; i++) {
+            int n = substring.length();
+            int j = i;
+            int k = 0;
+            while (n-- != 0) {
+                if (searchMe.charAt(j++) != substring.charAt(k++)) {
+                    continue test;
+                }
+            }
+            foundIt = true;
+                break test;
+        }
+``
+ 
+- Return statements are also a branching technique (returning control to the function the current function)
 
 ## Section 6: Working with Methods and Encapsulation
 

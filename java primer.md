@@ -1133,6 +1133,280 @@ try {
 
 - Grouping and Differentiating Error Types
 
+ # Notes from Exams
+
+- flow control requires boolean types to be evaluated, so x/y will not compile. (includes ifs, whiles, etc.)
  
+- enhanced loops can iterate over anything that implements the Collection Interface
+ 
+- The default no-args constructor is created in a subclass w/out constructor even if the superclass implements constructors.
+ 
+- A constructor inherits the access modifiers of its class.
+ 
+- The method signature is the name + number and type of paramenters. Return type is not part of the signature.
+ 
+- Constructors can be declared private (ie. Singletons). Construcors are non-static methods.
+ 
+**Scope, References & Garbage Collection**
+ 
+``java
+public class TestClass{
+  public void testRefs(String str, StringBuilder sb){
+    str = str + sb.toString();
+    sb.append(str);
+    str = null;
+    sb = null;
+  }
+  public static void main(String[] args){
+    String s = "aaa";
+    StringBuilder sb = new StringBuilder("bbb");
+    new TestClass().testRefs(s, sb);
+    System.out.println("s="+s+" sb="+sb);
+  }
+}
+``
+ 
+// The null assignments in testRefs does not affect the variables s and sb in the main method. ie. a="aaa" sb="bbbaaabbb"
+ 
+- There is a subtle difference between: int[] i; and int i[]; although in both the cases, i is an array of integers. The difference is if you declare multiple variables in the same statement such as: int[] i, j; and int i[], j;, j is not of the same type in the two cases.
+ 
+- Every class belongs to the no name package by default. This means they share the space with other no-name members but are not importable explicitly.
+ 
+- java.lang gets imported automatically (contains String class)
+ 
+- "." can be called an operator
+ 
+- Strings must be enclosed in double quotes while chars are single quotes. 'a' vs "a"
+ 
+- Remember that a labeled break or continue statement must always exist inside the loop where the label is declared. Here, if(j == 4) break POINT1; is a labelled break that is occurring in the second loop while the label POINT1 is declared for the first loop.
+ 
+- The rule is that an overriding method cannot throw an exception that is a super class of the exception thrown by the overridden method.
+ 
+- Java compiler recognizes the unreachable code in the loop and will refuse to compile.
+ 
+- | evaluates both sides, || evaluates the second side only if if the first evaluates to true. || & && are short-circuit operators.
+ 
+``java
+for (int value : arr) {
+           if (counter >= 5) {
+                 break;
+                } else {
+            continue; 
+               }    
+        if (value > 4) {  
+            arr[counter] = value + 1; 
+               }    
+           counter++;  
+       }
+ 
+ 
+- Evaluations occur left to right:
+ 
+``java
+class Test{
+   public static void main(String[] args){
+     int i = 4;
+      int ia[][][] = new int[i][i = 3][i];
+      System.out.println( ia.length + ", " + ia[0].length+", "+ ia[0][0].length);
+   }
+}
+// ==> 4, 3, 3
+``
+ 
+- Operations with Strings are quite good at converting values: String s = 'b'+63+"a";
+ 
+- To construct an instance of a sub class, its super class needs need to be constructed first. Since an instance can only be created via a constructor, some constructor of the super class has to be invoked. Either you explicitly call it or the compiler will add super() (i.e. no args constructor) as the first line of the sub class constructor.
+ 
+- 9 is an int primitive, so new Short(9) is invalid. Use Short s = new Short( (short) 9 ).
+ 
+- **instanceof** - left ar must be an object (not primitive) and right arg must be a class name
+ 
+**Primitive Operator Casting**
+ 
+Remember these rules for primitive types: 1. Anything bigger than an int can NEVER be assigned to an int or anything smaller than int ( byte, char, or short) without explicit cast. 2. CONSTANT values up to int can be assigned (without cast) to variables of lesser size ( for example, short to byte) if the value is representable by the variable.( that is, if it fits into the size of the variable). 3. operands of mathematical operators are ALWAYS promoted to AT LEAST int. (i.e. for byte * byte both bytes will be first promoted to int.) and the return value will be AT LEAST int. 4. Compound assignment operators ( +=, *= etc)  have strange ways so read this carefully:  A compound assignment expression of the form E1 op= E2 is equivalent to E1 = (T)((E1) op (E2)), where T is the type of E1, except that E1 is evaluated only once. Note that the implied cast to type T may be either an identity conversion or a narrowing primitive conversion.
+ 
+- An int can be assigned to a variable of type int, long, float or double/
+ 
+- Subclass overriding methods must return the same primitive type or covariant type of the parent's method.
+ 
+- Casting applies to the first arg on the right. ie. "by" in (long) by/d*3;
+ 
+- switch statements take only be String, byte, char, short, int, and enum values. It's lables must be compile time constants. The type of the input must be able to reach all case lables (memory-wise). Default label can occur in any order.
+ 
+- final variables can't be changed, but they can be shadowed
+ 
+- java.* doesn't import anaything, but is valid code.
+ 
+- Trying to make a method more private in a subclass will cause a compile error. Remember:
+private->'no modifier'->protected->public ( public is accessible to all and private is accessible to none except itself.)
+ 
+- String methods include trim but does not include append.
+ 
+- virtual calls mean calls are bound to a method at run time, not compile time.
+ 
+- Both ternary evaluations must return the same type.
+ 
+- Fields defined in an interface are ALWAYS considered as public, static, and final. (Methods are public and abstract.) Even if you don't explicitly define them as such. In fact, you cannot even declare a field to be private or protected in an interface. Therefore, you cannot assign any value to 'type' outside the interface definition.
+ 
+- & and | accept integral (number) primitive pairs as well as boolean (unlike &&).
+ 
+- All final variables must be initialized before the object is instanciated or it won't compile.
+ 
+- Abstract Classes
+  - A class is uninstantiable if the class is declared abstract.
+  - If a method has been declared as abstract, it cannot provide an implementation i.e. a method body even if empty (and the class containing that method must be declared abstract).
+  - If a method is not declared abstract, it must provide a method body (the class can be abstract but not necessarily so).
+  - If any method in a class is declared abstract, then the whole class must be declared abstract.
+ 
+- Interfaces
+  - Every interface is implicitly abstract. This modifier is obsolete for interfaces and should not be used in new Java programs.
+  - An interface can extend any number of other interfaces and can be extended by any number of other interfaces
+  - Every field declaration in the body of an interface is implicitly public, static and final. It is permitted, but strongly discouraged as a matter of style, to redundantly specify any or all of these modifiers for such fields. A constant declaration in an interface must not include any of the modifiers synchronized, transient or volatile, or a compile-time error occurs.
+  - It is possible for an interface to inherit more than one field with the same name. Such a situation does not in itself cause a compile-time error. However, any attempt within the body of the interface to refer to either field by its simple name will result in a compile-time error, because such a reference is ambiguous.
+  - Every method declaration in the body of an interface is implicitly public and abstract, so its body is always represented by a semicolon, not a block.
+  - A method in an interface cannot be declared static, because in Java static methods cannot be abstract.
+  - A method in an interface cannot be declared native or synchronized, or a compile-time error occurs, because those keywords describe implementation properties rather than interface properties. However, a method declared in an interface may be implemented by a method that is declared native or synchronized in a class that implements the interface.
+ 
+- Overriding Methods
+  - A method can be overridden by defining a method with the same signature(i.e. name and parameter list) and return type as the method in a superclass. The return type can also be a subclass of the orginal method's return type.
+  - Only methods that are accessible can be overridden. A private method cannot, therefore, be overridden in subclasses, but the subclasses are allowed to define a new method with exactly the same signature.
+  - A final method cannot be overridden.
+  - An overriding method cannot exhibit behavior that contradicts the declaration of the original method. An overriding method therefore cannot return a different type (except a subtype) or throw a wider spectrum of exceptions than the original method in the superclass.
+  - A subclass may have a static method with the same signature as a static method in the base class but it is not called overriding. It is called shadowing because the concept of polymorphism doesn't apply to static members.
+ 
+ 
+ 
+**Common Exceptions**
+ 
+- Errors
+  - AssertionError
+- Exception
+  - IOException
+    - FileNotFoundException
+  - RuntimeException
+    - IndexOutOfBoundsException
+      - StringIndexOutOfBoundsException
+      - ArrayIndexOutOfBoundsException
+    - IllegalArgumentException
+    - IllegalStateException
+    - ClassCastException
+    - NullPointerException
+    - SecurityException
+ 
+ 
+- Exceptions
+  - The terminology "thrown by the JVM" and "thrown programatically or by the application" is not precise but is used by popular books. If it helps, you can think of the exception categories as "thrown implicitly" and "thrown explicitly". An exception that is thrown even when there is no throw statement, is said to be thrown implicitly. For example, calling a method on null will cause a NullPointerException to be thrown automatically, even though there is no throw statement. On the other hand, a code may throw an exception explicitly by using the throw statement. For example, a method code might check an argument for validity and if it finds the argument inappropriate, it may throw an exception by executing throw new IllegalArgumentException();.
+  - Errors are always thrown only by the JVM
+ 
+- You cannot statically import package members, only static members of a class (wildards are fine).
+ 
+- String, StringBuilder, and StringBuffer - all are final classes.
+ 
+- Remember that wrapper classes (java.lang.Boolean, java.lang.Integer, java.lang.Long, java.lang.Short etc.) are also final and so they cannot be extended.
+ 
+- java.lang.Number, however, is not final. Integer, Long, Double etc. extend Number.
+ 
+- java.lang.System is final as well.
+ 
+- Order of declarations:
+  - First, static statements/blocks are called IN THE ORDER they are defined.
+  - Next, instance initializer statements/blocks are called IN THE ORDER they are defined.
+  - Finally, the constructor is called. So, it prints a b c 2 3 4 1
+ 
+- .sublist(1,1) returns an empty list.
+ 
+- The Exception that is thrown in the last, is the Exception that is thrown by the method to the caller.
+So, when no exception or any exception is thrown at line 1, the control goes to finally or some catch block. Now, even if the catch blocks throws some exception, the control goes to finally.
+ 
+ 
+ 
+**Packages**
+ 
+- java.lang
+  - String
+- java.util
+  - ArrayList
+ 
+ 
+- Variables are shadowed and methods are overriden. The following code returns 8 Accelerate : Sportscar - the parents variable with the childs method on account of the Car reference type:
+ 
+``java
+class Car{
+   public int gearRatio = 8;
+   public String accelerate() {  return "Accelerate : Car";  }
+}
+class SportsCar extends Car{
+   public int gearRatio = 9;
+   public String accelerate() {  return  "Accelerate : SportsCar";  }
+   public static void main(String[] args){
+      Car c = new SportsCar();
+      System.out.println( c.gearRatio+"  "+c.accelerate() );
+   }
+}
+``
+ 
+- **Class Declaration**
+  - main method should be static
+  - main method must be public
+  - the class name must have the file name
+  - the main method arg must be a array of strings
+ 
+- null has Object covariant type?
+ 
+- You cannot call class variables from the main method without referencing the object (they're not global vars)
+ 
+- Objects default to null value (this includes Strings)
+ 
+- THE LOOP CONDITION MUST EVALUATE TO BOOLEAN TYPE
+ 
+- Which is these are valid?
+ 
+``java
+1. for (int i=5; i=0; i--) { }
+2.  int j=5;
+      for(int i=0, j+=5;  i<j ; i++) {  j--;  }
+3. int i, j;
+    for (j=10; i<j; j--) { i += 2; }
+4. int i=10;
+    for ( ; i>0 ; i--) { }
+5. for (int i=0, j=10; i<j; i++, --j) {;}
+``
+ 
+4 & 5
+ 
+No 1.
+uses '=' instead of '==' for condition which is invalid. The loop condition must be of type boolean.
+ 
+No 2.
+uses 'j +=5'. Now, this statement is preceded by 'int i=0,' and that means we are trying to declare variable j. But it is already declared before the for loop. If we remove the int in the initialization part and declare i before the loop then it will work. But if we remove the statement int j = 5; it will not work because compiler will try to do j = j+5 and you can't use the variable before it is initialized. Although the compiler gives a message 'Invalid declaration' for j += 5 but it really means the above mentioned thing.
+ 
+No 3. i is uninitialized.
+ 
+No 4. is valid. It contains empty initialization part.
+ 
+No 5.
+This is perfectly valid. You can have any number of comma separated statements in initialization and incrementation part. The condition part must contain a single expression that returns a boolean.
+All a for loop needs is two semi colons :-
+for( ; ; ) {} This is a valid for loop that never ends. A more concise form for the same is : for( ; ; );
+ 
+``java
+package loops; public class JustLooping {     private int j;     void showJ(){         while(j<=5){             for(int j=1; j <= 5;){                 System.out.print(j+" ");                 j++;             }             j++;         }     }     public static void main(String[] args) {         new JustLooping().showJ();     } }
+// prints 1 2 3 4 5 siz times.
+``
+ 
+ 
+ 
+- Local variables are not initialized by default. We have to explicitly initialize local variables other wise they remain uninitialized and it will be a compile time error if such variables are accessed without getting initialized.
+Instance variables and static variables receive  a default value if not explicitly initialized. All primitive types get a defaults value equivalent to 0. (eg. int to 0 and float to 0.0f etc) and boolean to false. The type/class of a variable does not affect whether a variable is initialized or not.
+ 
+- Whether a call needs to be wrapped in a try/catch or whether the enclosing method requires a throws clause depends on the class of the reference and not the class of the actual object.
+ 
+-  Within an instance method, you can access the current object of the same class using 'this'
+ 
+- Variables defined in the try block are not visible from the catch block (will not compile)
+ 
+- public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
+ 
+- Encapsulation means that the internal representation of an object is generally hidden from view outside of the object's definition.
 
  

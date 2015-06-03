@@ -51,6 +51,7 @@
  
 # Drafts
 
+- [AWS CodeDeploy + Github Deployment]
 - [boto + Fabric Deployment]
 - [Pydata Dallas 2015]
 - [Marked] vs. [Markdown.js]

@@ -123,6 +123,7 @@ ga('send', 'exception', {
   'appName', 'myApp',
   'appVersion', '1.0'
 });
+``
 
 ## Plugins
 

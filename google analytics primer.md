@@ -120,8 +120,8 @@ ga('send', 'event', 'button', 'click', 'nav buttons', 4);
 ga('send', 'exception', {
   'exDescription': 'DatabaseError',
   'exFatal': false,
-  'appName', 'myApp',
-  'appVersion', '1.0'
+  'appName': 'myApp',
+  'appVersion': '1.0'
 });
 ``
 

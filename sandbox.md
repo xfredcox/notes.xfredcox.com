@@ -51,6 +51,7 @@
  
 # Drafts
 
+- [AWS Certified Solutions Architect]
 - [AWS CodeDeploy + Github Deployment]
 - [boto + Fabric Deployment]
 - [Pydata Dallas 2015]

@@ -64,6 +64,8 @@
 
 - [Kanban Primer]
 
+
+- [Pydata London 2015]
 ----
 
 # Backlog

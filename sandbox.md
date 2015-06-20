@@ -65,7 +65,8 @@
 - [Kanban Primer]
 
 
-- [Pydata London 2015]
+- [Pydata London 2015
+]
 ----
 
 # Backlog
